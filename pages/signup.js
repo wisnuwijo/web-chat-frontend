@@ -3,7 +3,8 @@ import axios from 'axios';
 import Head from 'next/head'
 import Image from 'next/image'
 import Img1 from '../public/assets/img-1.svg'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function signUp() {
 
@@ -12,6 +13,13 @@ export default function signUp() {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+
+    const router = useRouter()
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        if (token) router.push('/')
+    }, [])
 
     const registerHandler = async (e) => {
         e.preventDefault()
@@ -36,6 +44,8 @@ export default function signUp() {
 
             localStorage.setItem('data.user', JSON.stringify(userData))
             localStorage.setItem('token', JSON.stringify(register.data.token))
+
+            router.push('/')
         } else {
             if (register.data.message) setErrorMessage(register.data.message)
             else setErrorMessage('Invalid credentials, please try again')
@@ -43,8 +53,8 @@ export default function signUp() {
     }
 
     const registerForm = () => {
-        return <div className="grid grid-cols-2 gap-4 min-h-screen">
-            <div className="p-20 align-middle">
+        return <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-screen">
+            <div className="p-10 md:p-20 align-middle col-auto md:col-span-1">
                 <div>
                     <h2 className="font-extrabold text-2xl pb-2 pt-5">Sign up</h2>
                     <Link href="/signin">
@@ -72,7 +82,7 @@ export default function signUp() {
                     </p>
                 </div>
             </div>
-            <div className="bg-green-200 p-10">
+            <div className="bg-green-200 p-0 md:p-10 col-auto hidden md:block">
                 <Image src={Img1} />
             </div>
         </div>
