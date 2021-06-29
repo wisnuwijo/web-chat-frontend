@@ -43,7 +43,7 @@ export default function signUp() {
             delete userData.password;
 
             localStorage.setItem('data.user', JSON.stringify(userData))
-            localStorage.setItem('token', JSON.stringify(register.data.token))
+            localStorage.setItem('token', register.data.token)
 
             router.push('/')
         } else {
