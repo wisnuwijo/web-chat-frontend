@@ -6,14 +6,13 @@ import Img1 from '../public/assets/img-1.svg'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-export default function signUp() {
+export default function SignUp() {
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
-
     const router = useRouter()
 
     useEffect(() => {
@@ -83,7 +82,7 @@ export default function signUp() {
                 </div>
             </div>
             <div className="bg-green-200 p-0 md:p-10 col-auto hidden md:block">
-                <Image src={Img1} />
+                <Image src={Img1} alt="image" />
             </div>
         </div>
     }
@@ -92,7 +91,7 @@ export default function signUp() {
         <div>
             <Head>
                 <title>Sign up</title>
-                <meta name="description" content="ChatApp" />
+                <meta name="description" content="SpeakUp" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             {registerForm()}

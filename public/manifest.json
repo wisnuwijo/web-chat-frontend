@@ -1,0 +1,9 @@
+{
+  "name": "speakup",
+  "short_name": "speakup",
+  "theme_color": "#118855",
+  "background_color": "#118855",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}

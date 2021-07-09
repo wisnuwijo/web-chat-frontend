@@ -6,7 +6,9 @@ module.exports = {
       'reguler': ['Menlo', 'Monaco, Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono',
         'Bitstream Vera Sans Mono', 'Courier New', 'monospace']
     },
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({})
+    },
   },
   variants: {
     extend: {},

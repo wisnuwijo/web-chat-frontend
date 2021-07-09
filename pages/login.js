@@ -12,7 +12,7 @@ export default function Login() {
     const [errorMessage, setErrorMessage] = useState('')
 
     const router = useRouter()
-    
+
     useEffect(() => {
         document.title = 'Login'
 
@@ -77,7 +77,7 @@ export default function Login() {
             </div>
         </div>
         <div className="bg-green-200 p-0 md:p-10 col-auto hidden md:block">
-            <Image src={Img1} />
+            <Image src={Img1} alt="image" />
         </div>
     </div>
 }
