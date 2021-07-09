@@ -14,7 +14,7 @@ export default function Login() {
     const router = useRouter()
 
     useEffect(() => {
-        document.title = 'Login'
+        document.title = 'SpeakUp - Login'
 
         const token = localStorage.getItem('token')
         if (token) router.push('/')

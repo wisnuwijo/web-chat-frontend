@@ -90,7 +90,7 @@ export default function SignUp() {
     return (
         <div>
             <Head>
-                <title>Sign up</title>
+                <title>SpeakUp - Sign up</title>
                 <meta name="description" content="SpeakUp" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
