@@ -4,18 +4,22 @@ import Chat from "./chat"
 export default function RecentChat(props) {
 
     const [chatList, setChatList] = useState([])
+    const [activeChatRoomsId, setActiveChatRoomsId] = useState()
 
     useEffect(() => {
         if (props.chats != undefined && props.chats.length > 0) {
             let chats = []
             for (let i = 0; i < props.chats.length; i++) {
-                const el = <Chat key={props.chats[i].key} name={props.chats[i].name} lastChat={props.chats[i].lastChat} />
+                const el = <Chat onClick={(_) => {
+                    setActiveChatRoomsId(props.chats[i].chat_rooms_id)
+                    props.onChatClick(props.chats[i].name, props.chats[i].chat_rooms_id)
+                }} key={props.chats[i].key} isSelected={props.chats[i].chat_rooms_id == activeChatRoomsId} name={props.chats[i].name} lastChat={props.chats[i].lastChat} />
                 chats.push(el)
             }
 
             setChatList(chats)
         }
-    }, [])
+    }, [props.chats])
 
     return (
         <div>
@@ -27,10 +31,10 @@ export default function RecentChat(props) {
                     Recent chats
                 </div>
                 <div className="col-span-1 flex justify-end">
-                    <button className="w-8 bg-green-100 text-green-400 h-8">+</button>
+                    <button onClick={props.onAddButtonClick} className="w-8 bg-green-100 text-green-400 h-8" >+</button>
                 </div>
             </div>
-            <div className="mt-5">
+            <div className="mt-5 cursor-pointer">
                 {chatList}
             </div>
         </div>

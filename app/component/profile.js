@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react"
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 
 export default function Index() {
 
     const [name, setName] = useState('')
+    const [pin, setPin] = useState()
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('data.user'))
-        if (userData.name) setName(userData.name)
+        if (userData && userData.name) {
+            setName(userData.name)
+            setPin(userData.pin)
+        }
     }, [])
 
     return <div>
@@ -22,7 +26,7 @@ export default function Index() {
             </div>
             <div className="grid grid-cols-1 pt-3 pl-3 justify-items-center">
                 <div className="rounded-full text-md bg-green-200 pt-1 pb-1 pl-5 pr-5" style={{ color: "rgba(6, 78, 59, var(--tw-bg-opacity))" }}>
-                    Available
+                    PIN : {pin}
                 </div>
             </div>
         </div>
